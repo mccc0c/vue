@@ -20,7 +20,7 @@ export default {
     methods: {
     	increment:function(){
     		this.counter=this.counter+=1;
-    		this.$emit('increment');
+    		this.$emit('incremen');
     	}
     }
 }

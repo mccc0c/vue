@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import index from '@/components/index'
+import Hello from '@/views/Hello'
+import index from '@/views/index'
+import login from '@/views/login'
+import member from '@/views/member'
 Vue.use(Router)
 
 export default new Router({
@@ -15,6 +17,18 @@ export default new Router({
       path: '/',
       name: 'index',
       component: index
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
+    },
+    {
+      path: '/member',
+      name: 'member',
+      component: member,
+      meta: { requiresAuth: true }
     }
+
   ]
 })

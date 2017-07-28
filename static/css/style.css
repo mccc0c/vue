@@ -1,0 +1,129 @@
+ input{-webkit-appearance: none;}
+.header{
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	top:0;
+	left: 0;
+	background: #ddd;
+	font-size: 16px;
+}
+.header >a{
+	width: 16%;
+	color: #fff;
+	height: 50px;
+	line-height: 50px;
+	
+}
+.header>div{
+	width: 56%;
+	float: left;
+	line-height: 50px;
+	text-align: center;
+	height: 50px;
+
+}
+.header .ahello{	
+	padding-left: 6%;
+	float: left;
+	text-align: left;
+}
+.header .amember{
+	padding-right: 6%;
+	float: right;
+	text-align: right;
+}
+.amember img{
+	    width: 24px;
+    margin-top: 13px;
+}
+.blank{
+	width: 100%;
+	height: 50px;
+}
+.footer{
+	width: 100%;
+	height: 40px;
+	position: fixed;
+	bottom:0;
+	left: 0;
+	background: #ddd;
+	padding:5px 0 5px 0;
+	font-size: 18px;
+}
+.footer >i{
+	
+	float: left;
+	border-left: 2px solid #fff;
+	display: block;	
+	height: 40px;
+}
+.footer >a{
+	    width: 49%;
+    line-height: 40px;
+    text-align: center;
+    display: block;
+    float: left;
+    
+}
+.main_cont{
+	width: 100%;
+}
+.login_wrapper{
+	width: 90%;
+	margin:30px auto;
+
+}
+.login_wrapper li{
+	width: 100%;
+	height: 50px
+}
+.login_wrapper li label{
+	display: block;
+	width: 30%;
+	line-height: 50px;
+	text-align: left;
+	float: left;
+}
+.login_wrapper li p{
+	line-height: 50px;
+	width:70%;
+	display: block;
+	float: left;
+
+}
+.login_wrapper li p input{
+	width: 100%;
+	height: 30px;
+	text-indent: 4px;
+	border: 1px solid #ddd;
+	font-size: 16px;
+}
+.submit_btn{
+	    width: 90%;
+    height: 30px;
+    margin: 0 auto;
+    display: block;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+@media only screen and (min-width:600px) { }
+@media only screen and (max-width:350px) {
+	.myform li label, .myform label { width: 28% }
+}
+@media only screen and (max-width:320px) {
+	.box1 .list li .text p { font-size: 0.52rem }
+}
+@media only screen and (min-height:667px) { }
+@media only screen and (max-height:580px) { }
+@media only screen and (max-height:500px) { }
+@media only screen and (max-height:667px) { }
+@media only screen and (max-height:568px) and (min-width:320px) { }
+@media only screen and (max-height:480px) and (min-width:320px) { }
+@media (-webkit-min-device-pixel-ratio:2) {
+	.border1 { border-width: .5px }
+}
+@media (-webkit-min-device-pixel-ratio:3) {
+	.border1 { border-width: .7px }
+}
