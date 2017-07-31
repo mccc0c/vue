@@ -23,7 +23,26 @@ Vue.config.productionTip = false
   template: '<App/>',
   components: { App }
 })*/
-
+window.lsset= function(key,value){
+	var curTime = new Date().getTime();
+	localStorage.setItem(key,JSON.stringify({data:value,time:curTime}));
+};
+window.lsget = function(key,exp){
+	var data = localStorage.getItem(key);
+	/*console.log(data);*/
+	/*if(!data){
+		return null;
+	}*/
+	var dataObj = JSON.parse(data);
+	/*console.log(dataObj);*/
+	if(new Date().getTime() - dataObj.time >exp){
+		console.log('Information has passed.');
+		return null;
+	}else{
+		/*var dataObjDatatoJson = JSON.parse(dataObj.data);*/
+		return dataObj.data;
+	}
+}
 // 全局导航钩子
  router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {

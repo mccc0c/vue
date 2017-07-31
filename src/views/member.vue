@@ -3,7 +3,10 @@
 		<elheader :mtitle="mtitle" ></elheader> 
 		<div class="blank"></div> 
 		<div class="main_cont">
-	
+			<div class="member_list">
+				<img src="../../static/images/default.png">
+				<label>{{membername}}</label>
+			</div>
 
 		<a @click="isLoginOut" class="submit_btn">Login out</a> 
 		</div>
@@ -19,15 +22,33 @@
 			name:'member',
 			data() {
 				return {
-					name:'',
-					pwd:'',
-					error:'',
+					membername:'',
 					mtitle:'member'
 				}
 			},
 			components: {
 		        elheader,
 		        elfooter
+		    },
+		    created() {
+			    
+			      
+			  },
+		    mounted() {
+		    	let that = this;
+		        $(function(){
+		            /*console.log('jquery success');*/
+		            /*that.membername=that.getData();*/
+		            var getData = lsget('uid',1000*60);
+		            /*console.log(getData);*/
+					if(getData == null){
+						localStorage.setItem('uid','');
+						that.$router.push(that.$route.query.redirect || '/login');
+						return false;
+					}else{
+						that.membername = getData;
+					}
+		        })
 		    },
 			computed: {
 				

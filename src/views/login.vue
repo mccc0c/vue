@@ -35,33 +35,20 @@
 		        elheader
 		    },
 			computed: {
-				user() {
+				/*user() {
 					console.log(this.$store.state.user);
 					return this.$store.state.user
-				}
+				}*/
 			},
 			methods:{
 				isLogin:function() {
 					let that = this;
 		            that.$http.get('../static/data/login.json').then(response => {
 		                if(response.data === null){that.hassomething=false;}
-		                    var users = response.data.users;	
-		                    console.log('login in');	    
-		                    /*var flag = false;
-		                    for(var user in users){
-		                    	console.log(this);
-		                    	if(that.name == user.username && that.pwd == user.password){
-		                    		flag = true;
-		                    		break;
-		                    	}
-		                    }
-		                    console.log(flag);
-		                if(!flag){
-		                	console.log('success');
-		                	that.$router.push('/member');
-		                }*/
+		                    var users = response.data.users;			        
 		                //存入localStorage，表示已经登录
-		                localStorage.setItem('uid',that.name);
+		                lsset('uid',that.name);
+		                /*localStorage.setItem('uid',that.name);*/
 		                that.$router.push(that.$route.query.redirect || '/member');
 		                // success callback
 		            }, response => {

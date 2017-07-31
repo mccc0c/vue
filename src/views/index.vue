@@ -38,9 +38,7 @@ export default {
 
     },
     mounted() {
-        /*$(function(){
-            console.log('jquery success');
-        })*/
+        
     },
     methods: {
         incrementTotal: function() {
