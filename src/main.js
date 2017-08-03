@@ -13,7 +13,9 @@ import '../static/css/easy.css'
 import '../static/css/style.css'
 
 Vue.use(VueResource);
-
+/*
+*日志输出开关
+*/
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -30,12 +32,13 @@ window.lsset= function(key,value){
 window.lsget = function(key,exp){
 	var data = localStorage.getItem(key);
 	/*console.log(data);*/
-	/*if(!data){
+	if(!data || data == null){
 		return null;
-	}*/
+	}
 	var dataObj = JSON.parse(data);
 	/*console.log(dataObj);*/
 	if(new Date().getTime() - dataObj.time >exp){
+    localStorage.setItem('uid','');
 		console.log('Information has passed.');
 		return null;
 	}else{
@@ -46,6 +49,7 @@ window.lsget = function(key,exp){
 // 全局导航钩子
  router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
+    /*console.log(isEmptyObject());*/
     if (!isEmptyObject()) {
       next({
         path: '/login',
@@ -61,10 +65,10 @@ window.lsget = function(key,exp){
   }
 })
 
- function isEmptyObject() {
- 	var uid = localStorage.getItem('uid');
+ window.isEmptyObject = function()  {
+ 	var uid = lsget('uid',1000*60);
  	/*console.log(uid);*/
-     if (!uid || uid== 'undefined') {
+     if (!uid) {
     	return false;
  	 }else{
  	 	return true;

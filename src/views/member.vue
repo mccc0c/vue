@@ -23,7 +23,9 @@
 			data() {
 				return {
 					membername:'',
-					mtitle:'member'
+					mtitle:'member',
+					isLogin:isEmptyObject()
+
 				}
 			},
 			components: {
@@ -39,16 +41,23 @@
 		        $(function(){
 		            /*console.log('jquery success');*/
 		            /*that.membername=that.getData();*/
-		            var getData = lsget('uid',1000*60);
+		            /*var getData = lsget('uid',1000*60);*/
 		            /*console.log(getData);*/
-					if(getData == null){
+					/*if(getData == null){
 						localStorage.setItem('uid','');
 						that.$router.push(that.$route.query.redirect || '/login');
 						return false;
 					}else{
 						that.membername = getData;
+					}*/
+					if(!that.isLogin){
+						that.$router.push(that.$route.query.redirect || '/login');
+					}else{
+						that.membername =lsget('uid',1000*60);
 					}
+					 
 		        })
+					
 		    },
 			computed: {
 				

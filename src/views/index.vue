@@ -9,11 +9,15 @@
             <p>{{ total }}</p>
             <buttoncounter v-on:incremen="incrementTotal"></buttoncounter>
             <buttoncounter v-on:incremen="incrementTotal"></buttoncounter>       
-            <button v-on:click="getData">getData</button>
-            <ul v-if="hassomething">
+            <!-- <button v-on:click="getData">getData</button> -->
+            <router-link v-if="!isLogin" to="/login">Please login in</router-link>
+            <div v-else>
+                <ul v-if="hassomething">
                 <li v-for="item in items">{{item.title}}</li>
             </ul>
-            <p v-else>no data</p>           
+            <p v-else>no data</p>   
+            </div>
+                    
          </div>
          <div class="blank"></div>
          <elfooter></elfooter>
@@ -31,7 +35,8 @@ export default {
             total: 0,
             items: '',
             hassomething: true,
-            mtitle:'welcome'
+            mtitle:'welcome',
+            isLogin:isEmptyObject()
         }
     },
     created() {
@@ -39,6 +44,31 @@ export default {
     },
     mounted() {
         
+            let that = this;
+            /*if(!that.isLogin){
+                that.$router.push(that.$route.query.redirect || '/login');
+                return false;
+            }*/
+            that.$http.get('../static/data/user.json').then(response => {
+                if(response.data === null){that.hassomething=false;}
+                    that.items = response.data;
+                    /*console.log(response.data);*/
+                
+                // success callback
+            }, response => {
+                // error callback
+            });
+            /* $.ajax({                
+                 url: '../static/data/user.json',
+                 type: 'get',
+                 dataType: 'json',
+                 success: function(r) {
+                     that.items=r;
+                 },
+                 error:function(){
+                     that.hassomething=false;
+                 }
+             });*/
     },
     methods: {
         incrementTotal: function() {
@@ -46,6 +76,10 @@ export default {
         },
         getData: function() {
             let that = this;
+            if(!that.isLogin){
+                that.$router.push(that.$route.query.redirect || '/login');
+                return false;
+            }
             that.$http.get('../static/data/user.json').then(response => {
                 if(response.data === null){that.hassomething=false;}
                     that.items = response.data;
