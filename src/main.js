@@ -8,11 +8,13 @@ import VueResource from 'vue-resource';
 /*可导入公用的css和js*/
 import $ from 'jquery'
 import '../static/js/easy.js'
+import '../static/js/flexible.js'
 import '../static/js/jquery.validate.js'
 import '../static/css/easy.css'
 import '../static/css/style.css'
 
-Vue.use(VueResource);
+Vue.use(VueResource)
+
 /*
 *日志输出开关
 */

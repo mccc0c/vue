@@ -6,36 +6,36 @@
 			<form id="login_form">
 				<ul class="login_wrapper">
 					<li>
-					<label>Username</label>
-					<p><input v-model="name" type="text" placeholder="input your userid" name="username"/></p>
+					<p ><i class="user"></i><input v-model="name" type="text" placeholder="input your userid" name="username"/></p>
 					</li>
 					<li>
-					<label>password</label> 
-					<p><input v-model="pwd" type="password" placeholder="input your password" name="password"/></p> 
+					<p ><i class="pass"></i><input v-model="pwd" type="password" placeholder="input your password" name="password"/></p> 
 					</li>
 				</ul>
 				<div class="myerrorbox">
-                	<div class="myerror"><i><img src="../../static/images/m_2.png" width="18" height="18" alt=""/></i><span data-info="账号或密码错误"></span></div>
+                	<div class="myerror"><i><img src="../../static/images/m_2.png"/></i><span data-info="账号或密码错误"></span></div>
             	</div>
 				<a @click="isLogin" class="submit_btn">Login in</a> 
 			</form>
 		</div>
 		<div class="blank"></div>
+		<elfooter></elfooter>
 	</div>
 	</template>
 	<script>
 	import elheader from '../components/elheader.vue'
+	import elfooter from '../components/elfooter.vue'
 		export default {
 			data() {
 				return {
-					name:'',
-					pwd:'',
+					name:'admin',
+					pwd:'1111',
 					error:'',
 					mtitle:'Login'
 				}
 			},
 			components: {
-		        elheader
+		        elheader,elfooter
 		    },
 			computed: {
 				/*user() {
@@ -90,11 +90,19 @@
                     };
 		            that.$http.get('../static/data/login.json').then(response => {
 		                if(response.data === null){that.hassomething=false;}
-		                    var users = response.data.users;			        
-		                //存入localStorage，表示已经登录
-		                lsset('uid',that.name);
-		                /*localStorage.setItem('uid',that.name);*/
-		                that.$router.push(that.$route.query.redirect || '/member');
+		                    var users= response.data.users;	
+		            
+		                    if(users[0].username!=that.name){
+		                    	/*alert('wrong');*/
+		                    	$('.myerrorbox span').text('账号或密码错误');
+		                    	$('.myerror').show();
+		                    }else{
+		                    	//存入localStorage，表示已经登录
+		                		lsset('uid',that.name);
+		                	/*localStorage.setItem('uid',that.name);*/
+		                		that.$router.push(that.$route.query.redirect || '/member');
+		                    }	        
+		                
 		                // success callback
 		            }, response => {
 		                // error callback

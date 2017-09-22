@@ -4,6 +4,7 @@ import Hello from '@/views/Hello'
 import index from '@/views/index'
 import login from '@/views/login'
 import member from '@/views/member'
+import information from '@/views/information'
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +29,11 @@ export default new Router({
       name: 'member',
       component: member,
       meta: { requiresAuth: true }
+    },
+    {
+      path: '/information',
+      name: 'information',
+      component: information,
     }
 
   ]

@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
-		<router-link to="/" class="ahello">index</router-link>
-		<div>{{mtitle}}</div>
+		<div class="amenu">menu<img src="../../static/images/menu.png"></div>
+		<div class="title">{{mtitle}}</div>
 		<router-link to="/member" class="amember"><img src="../../static/images/m_1.png"></router-link>
 	</div>
 </template>
