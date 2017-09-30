@@ -1,12 +1,8 @@
- 
+img{width:100%;display:block;}
 
- img{
-	width: 100%;
-	display: block;
-}
 /*header&footer*/
 .blank{width:100%;height:50px;}
-.header,.footer{background:#2d3a4b;font-size:18px;width:100%;height:50px;z-index:2;position:fixed;left:0;display:flex;/*padding:5px 0 5px 0;*/color: #fff;}
+.header,.footer{background:#2d3a4b;font-size:18px;width:100%;height:50px;z-index:2;position:fixed;left:0;display:flex;/*padding:5px 0 5px 0;*/color:#fff;}
 .header{top:0;box-shadow:0 2px 2px rgb(99,35,35);}
 .footer{bottom:0;box-shadow:0 -2px 2px rgb(99,35,35);}
 .header .amenu{flex:1;text-indent:-9999px;}
@@ -20,11 +16,8 @@
 .footer i{display:block;width:25px;height:25px;margin:2px auto;}
 .footer .index i{background:url(../images/index.png) no-repeat center;background-size:100%;}
 .footer .information i{background:url(../images/index.png) no-repeat center;background-size:100%;}
+.main_cont{width:100%;font-size:16px;}
 
-.main_cont{
-	width: 100%;
-	font-size: 16px;
-}
 /*login*/
 .nologin{width:4rem;height:4rem;border-radius:50%;position:absolute;left:50%;top:50%;margin-top:-2rem;margin-left:-2rem;}
 .noloagintext{display:block;line-height:25px;text-align:center;color:black;}
@@ -37,76 +30,55 @@
 .login_wrapper li p input{width:80%;height:30px;text-indent:4px;border:none;float:left;margin-top:5px;color:#2d3a4b;outline:none;}
 .submit_btn{width:90%;height:30px;margin:0 auto;display:block;line-height:30px;text-align:center;color:#2d3a4b;border:1px solid #2d3a4b;}
 .myerrorbox{width:100%;height:30px;}
-.myerror{display:none;width:100%;line-height:15px;text-align:center;height:15px}
+.myerror{width:100%;line-height:15px;text-align:center;height:15px;visibility: hidden;}
 .myerror span{color:red;display:inline-block;line-height:15px;height:100%;vertical-align:middle;}
 .myerror i{display:inline-block;vertical-align:middle;margin-right:5px;}
 .myerror i img{width:15px;display:block;}
+
 /*info*/
-.infobox li{display:block;width: 100%;overflow: hidden;}
-.imgbox{width: 60px;float: left;}
-.chart1{width: 100%;height: 300px;}
-.member_list{
-	width: 100%;
-}
-.member_list img{
-	    width: 20%;
-    border-radius: 100%;
-    margin: 15px auto;
-        display: block;
-}
-.member_list label{
-	    width: 50%;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    line-height: 30px;
-    font-size: 16px;
-}
+.infobox li{display:block;width:100%;overflow:hidden;}
+.imgbox{width:60px;float:left;}
+.chart1{width:100%;height:300px;}
+.member_list{width:100%;}
+.member_list img{width:20%;border-radius:100%;margin:15px auto;display:block;}
+.member_list label{width:50%;display:block;margin:0 auto;text-align:center;line-height:30px;font-size:16px;}
+.nav ul{text-align:center;width:100%;height:30px;overflow:hidden;font-size:0;}
+.nav li{display:inline-block;width:23%;height:30px;line-height:30px;text-align:center;border-right:1px solid #eee;font-size:14px;}
+.nav .on{background:green;color:#fff;}
+.nav .last{border:none;}
+.box{width:100%;overflow:hidden;}
 
-.nav ul{
-	text-align: center;
-	width: 100%;
-	height: 30px;
-	overflow: hidden;
-	font-size: 0;
+/*index*/
+.assign li{position:relative;}
+.assign label{display:block;width:75%;margin:20px auto;border-radius:5px;background:rgb(251,224,145);height:60px;padding:5%;font-size:16px;line-height:20px;overflow:hidden;}
+.assign ul li p{position: absolute;bottom: 12px;display: block;right: 10%;width: 100px;height: 15px;line-height: 15px;text-align: right;bottom: 2px;font-size: 12px;}
+/*.assignbtns{position: relative;height: 10px;}*/
+.assign .addassgin{background: url(../images/add.png) no-repeat center;width: 30px;height: 30px;background-size: 100%;display: block;position: fixed;right: 1%;top: 55px;cursor: pointer;opacity: 0.5;z-index: 3;}
+.dialog{background: #fff;border-radius: 5px;}
+.dialog .dclose2{background: url(../images/close.png) 0 0 no-repeat;background-size: 100%; display: block; width: 14px; height: 14px; float: right; margin: 10px 10px 0 0; cursor: pointer; outline: none; }
+@media only screen and (min-width:600px){
 }
-.nav li{
-	display: inline-block;
-	width: 23%;
-	height: 30px;
-	line-height: 30px;
-	text-align: center;
-	border-right: 1px solid #eee;
-	font-size: 14px;
+@media only screen and (max-width:350px){
+	.myform li label,.myform label{width:28%}
 }
-.nav .on{
-	background: green;
-	color: #fff;
+@media only screen and (max-width:320px){
+	.box1 .list li .text p{font-size:0.52rem}
 }
-.nav .last{
-	border:none;
+@media only screen and (min-height:667px){
 }
-.box {
-	width: 100%;
-	overflow: hidden;
+@media only screen and (max-height:580px){
 }
-
-@media only screen and (min-width:600px) { }
-@media only screen and (max-width:350px) {
-	.myform li label, .myform label { width: 28% }
+@media only screen and (max-height:500px){
 }
-@media only screen and (max-width:320px) {
-	.box1 .list li .text p { font-size: 0.52rem }
+@media only screen and (max-height:667px){
 }
-@media only screen and (min-height:667px) { }
-@media only screen and (max-height:580px) { }
-@media only screen and (max-height:500px) { }
-@media only screen and (max-height:667px) { }
-@media only screen and (max-height:568px) and (min-width:320px) { }
-@media only screen and (max-height:480px) and (min-width:320px) { }
-@media (-webkit-min-device-pixel-ratio:2) {
-	.border1 { border-width: .5px }
+@media only screen and (max-height:568px) and (min-width:320px){
 }
-@media (-webkit-min-device-pixel-ratio:3) {
-	.border1 { border-width: .7px }
+@media only screen and (max-height:480px) and (min-width:320px){
+}
+@media (-webkit-min-device-pixel-ratio:2){
+	.border1{border-width:.5px}
+}
+@media (-webkit-min-device-pixel-ratio:3){
+	.border1{border-width:.7px}
 }

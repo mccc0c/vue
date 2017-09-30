@@ -29,7 +29,7 @@
 			data() {
 				return {
 					name:'admin',
-					pwd:'1111',
+					pwd:'111',
 					error:'',
 					mtitle:'Login'
 				}
@@ -88,21 +88,50 @@
                     if (!$("#login_form").valid()) {
                         return false;
                     };
-		            that.$http.get('../static/data/login.json').then(response => {
-		                if(response.data === null){that.hassomething=false;}
-		                    var users= response.data.users;	
-		            
-		                    if(users[0].username!=that.name){
-		                    	/*alert('wrong');*/
-		                    	$('.myerrorbox span').text('账号或密码错误');
-		                    	$('.myerror').show();
-		                    }else{
-		                    	//存入localStorage，表示已经登录
-		                		lsset('uid',that.name);
-		                	/*localStorage.setItem('uid',that.name);*/
-		                		that.$router.push(that.$route.query.redirect || '/member');
-		                    }	        
-		                
+                     /*$.ajax({                
+		                 url: 'http://localhost:3000/123',
+		                 type: 'get',
+		                 dataType: 'json',
+		                  headers:{
+                			"Conten-Type":"http://localhost:3000/123"
+            			},
+		                 success: function(r) {
+		                 	console.log(r);
+		                    that.$router.push(that.$route.query.redirect || '/member');
+		                 },
+		                 error:function(){
+		                     that.hassomething=false;
+		                 }
+             		});*/
+
+             		/*jsonp跨域，只能get*/
+             		/*that.$http.jsonp('http://localhost:3000/123',{},{
+		            	header:{}
+		            }).then(response => {
+		            	console.log(response.data);
+		                // success callback
+		            }, response => {
+		                // error callback
+		                alert('Wrong');
+		            });*/
+		            /*that.$http.get(api+'/123').then(response => {
+		            	console.log(response.data);
+		            	lsset('uid',that.name);
+		            	that.$router.push(that.$route.query.redirect || '/member');		                
+		                // success callback
+		            }, response => {
+		                // error callback
+		                alert('Wrong');
+		            });*/
+		            var datapost = {};
+		            /*alert(that.name+":"+that.pwd);*/
+		            datapost.name = that.name;
+		            datapost.password = that.pwd;
+		            that.$http.post(api+'/loginvue',datapost).then(response => {
+		            	/*console.log(response);*/
+		            	lsset('uid',that.name);
+		            	that.$router.push(that.$route.query.redirect || '/member');	
+		            	/*alert(response.body.password);	*/                
 		                // success callback
 		            }, response => {
 		                // error callback

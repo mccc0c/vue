@@ -87,7 +87,7 @@ input{-webkit-appearance: none;}
 .dialog { display: none; z-index: 10000; width: 40%; position: fixed !important; /* FF IE7*/ _position: absolute; /*IE6*/ _top: expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop + (document.documentElement.clientHeight- this.offsetHeight)/2:document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2); }
 .dialog.dani { -webkit-animation: bounceIn 0.1s forwards; }
 html, body { height: 100%; }
-.dialog .dclose { background: url(../images/close.png) 0 0 no-repeat; display: block; width: 14px; height: 14px; float: right; margin: 10px 10px 0 0; cursor: pointer; outline: none; }
+.dialog .dclose { background: url(../images/close.png) 0 0 no-repeat;background-size: 100%; display: block; width: 14px; height: 14px; float: right; margin: 10px 10px 0 0; cursor: pointer; outline: none; }
 .dialog .dtitle h3 { line-height: 24px; font-size: 14px; font-weight: bold; float: left; overflow: hidden; margin: 6px 10px 0 10px; }
 .dialog .dtitle { cursor: move; width: 100%; height: 35px; overflow: hidden; background: #fcfcfc; border-bottom: 1px solid #f2f2f2; -moz-user-select: none; }
 .modalbg { display: none; z-index: 1000; background-color: #000; width: 100%; height: 100%; left: 0; top: 0; filter: alpha(opacity=50); opacity: 0.5; position: fixed !important; _position: absolute; _top: expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop + (document.documentElement.clientHeight- this.offsetHeight)/2:document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2); }

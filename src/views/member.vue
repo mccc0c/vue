@@ -53,7 +53,7 @@
 					if(!that.isLogin){
 						that.$router.push(that.$route.query.redirect || '/login');
 					}else{
-						that.membername =lsget('uid',1000*60);
+						that.membername =lsget('uid',1000*60*60);
 					}
 					 
 		        })
