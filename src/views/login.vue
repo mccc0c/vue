@@ -29,7 +29,7 @@
 			data() {
 				return {
 					name:'admin',
-					pwd:'111',
+					pwd:'123',
 					error:'',
 					mtitle:'Login'
 				}
@@ -128,10 +128,14 @@
 		            datapost.name = that.name;
 		            datapost.password = that.pwd;
 		            that.$http.post(api+'/loginvue',datapost).then(response => {
-		            	/*console.log(response);*/
-		            	lsset('uid',that.name);
-		            	that.$router.push(that.$route.query.redirect || '/member');	
-		            	/*alert(response.body.password);	*/                
+		            	var res = response.body;
+		            	if(res.code == 200){
+		            		lsset('uid',that.name);
+		            		that.$router.push(that.$route.query.redirect || '/member');	
+		            	}else{
+		            		$('.myerror span').html('账号密码错误');
+		            		$('.myerror').show().addClass('on');
+		            	}             
 		                // success callback
 		            }, response => {
 		                // error callback

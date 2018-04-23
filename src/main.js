@@ -16,8 +16,8 @@ import '../static/css/style.css'
 Vue.use(VueResource)
 
 /*
-*日志输出开关
-*/
+ *日志输出开关
+ */
 Vue.config.productionTip = false;
 window.api = "http://172.16.22.247:3000";
 
@@ -28,63 +28,70 @@ window.api = "http://172.16.22.247:3000";
   template: '<App/>',
   components: { App }
 })*/
-window.lsset= function(key,value){
+window.lsset = function(key, value) {
 	var curTime = new Date().getTime();
-	localStorage.setItem(key,JSON.stringify({data:value,time:curTime}));
+	localStorage.setItem(key, JSON.stringify({ data: value, time: curTime }));
 
 };
-window.lsget = function(key,exp){
+window.lsget = function(key, exp) {
 	var data = localStorage.getItem(key);
 	/*console.log(data);*/
-	if(!data || data == null){
+	if (!data || data == null) {
 		return null;
 	}
 	var dataObj = JSON.parse(data);
 	/*console.log(dataObj);*/
-	if(new Date().getTime() - dataObj.time >exp){
-    localStorage.setItem('uid','');
+	if (new Date().getTime() - dataObj.time > exp) {
+		localStorage.setItem('uid', '');
 		console.log('Information has passed.');
 		return null;
-	}else{
+	} else {
 		/*var dataObjDatatoJson = JSON.parse(dataObj.data);*/
 		return dataObj.data;
 	}
 }
 // 全局导航钩子
- router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    /*console.log(isEmptyObject());*/
-    if (!isEmptyObject()) {
-      next({
-        path: '/login',
-        query: {
-          redirect: to.fullPath
-        }
-      })
-    } else {
-      next()
-    }
-  } else {
-    next()
-  }
+router.beforeEach((to, from, next) => {
+	if (to.matched.some(record => record.meta.requiresAuth)) {
+		/*console.log(isEmptyObject());*/
+		if (!isEmptyObject()) {
+			next({
+				path: '/login',
+				query: {
+					redirect: to.fullPath
+				}
+			})
+		} else {
+			next()
+		}
+	} else {
+		next()
+	}
 })
 
- window.isEmptyObject = function()  {
- 	var uid = lsget('uid',1000*60*60);
- 	/*console.log(uid);*/
-     if (!uid) {
-    	return false;
- 	 }else{
- 	 	return true;
- 	 }
- }
- /*window.closeDialog=function(){
-            $("body").css({ "overflow": "auto", "padding-right": "0px" });
-            $('.dialog_addassign').css('display',"none");
-            $('.modalbg').css('display',"none");
-            console.log("close");
-        }*/
+window.isEmptyObject = function() {
+	var uid = lsget('uid', 1000 * 60 * 60);
+	/*console.log(uid);*/
+	if (!uid) {
+		return false;
+	} else {
+		return true;
+	}
+}
+window.checkAndRedirect = function(url,that) {
+	if (!isEmptyObject()) {
+		that.$router.push(that.$route.query.redirect || url);
+	} else {
+		that.membername = lsget('uid', 1000 * 60 * 60);
+	}
+}
+/*window.closeDialog=function(){
+           $("body").css({ "overflow": "auto", "padding-right": "0px" });
+           $('.dialog_addassign').css('display',"none");
+           $('.modalbg').css('display',"none");
+           console.log("close");
+       }*/
 new Vue({
-    router,
-    render: h => h(App)
+	router,
+	render: h => h(App)
 }).$mount('#app-box')

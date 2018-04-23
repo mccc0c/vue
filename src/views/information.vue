@@ -22,7 +22,7 @@
 		
 		</div>
 		<div class="blank"></div>
-		<elfooter></elfooter>
+		<elfooter :indexHtml="indexHtmlVal"></elfooter>
 	</div>
 	</template>
 	<script>
@@ -33,10 +33,11 @@
 		export default {
 			data() {
 				return {
+					indexHtmlVal:1,
+					mtitle:'Login',
 					name:'',
 					pwd:'',
-					error:'',
-					mtitle:'Login',
+					error:'',					
 					loadedImages:0,
 					images:[
 						'../../static/images/1.jpg',
@@ -45,7 +46,7 @@
 						'../../static/images/2.jpg'
 
 					],
-					node:[]
+					node:[],
 				}
 			},
 			components: {
